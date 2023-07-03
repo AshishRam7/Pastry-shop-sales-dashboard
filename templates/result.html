@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Progress Tracker</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
+  <style>
+    body {
+      background-color: #232323;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .chart-container {
+      max-width: 600px;
+      margin: 40px auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Project Progress Tracker</h1>
+
+  <div class="chart-container">
+    <canvas id="bar-chart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="line-chart"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
+  <script>
+    // Bar Chart Data
+    var barChartData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [{
+        label: 'Sales',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1,
+        data: [10, 20, 15, 25, 30, 20]
+      }]
+    };
+
+    // Line Chart Data
+    var lineChartData = {
+      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      datasets: [{
+        label: 'Visitors',
+        fill: false,
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 2,
+        data: [200, 400, 300, 500, 350, 600, 400]
+      }]
+    };
+
+    // Bar Chart Configuration
+    var barChartConfig = {
+      type: 'bar',
+      data: barChartData,
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    };
+
+    // Line Chart Configuration
+    var lineChartConfig = {
+      type: 'line',
+      data: lineChartData,
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    };
+
+    // Render Charts
+    window.onload = function() {
+      var barChartCtx = document.getElementById('bar-chart').getContext('2d');
+      new Chart(barChartCtx, barChartConfig);
+
+      var lineChartCtx = document.getElementById('line-chart').getContext('2d');
+      new Chart(lineChartCtx, lineChartConfig);
+    };
+  </script>
+</body>
+</html>

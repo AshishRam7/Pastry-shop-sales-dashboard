@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Analytics Dashboard</title>
+  
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    .container{
+      padding-left: 0px;
+    }
+
+    .dashboard{
+      padding-left: 0px;
+    }
+
+    .sidebar{
+      margin-right: 0px;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    a{
+        text-decoration: none;
+    }
+    .linked{
+        color:#fff;
+
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #2980B9;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      position: relative;
+      padding: 1;
+      margin: 20;
+    }
+
+    .sidebar li {
+      padding: 1px;
+      cursor: pointer;
+    }
+
+    .sidebar li:hover {
+      background-color: #0A3D62;
+    }
+
+    .dashboard {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .dashboard h1 {
+      color: #192A56;
+      margin-bottom: 20px;
+    }
+    
+    .dashboard .card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #F5F6FA;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    
+
+    .card2.card{
+        border-right: 100px;
+    }
+
+    .dashboard.recent-orders{
+        background-color: #E8F2FB;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-left: auto;
+        width: 400px;
+    }
+
+    .dashboard .card .title {
+      font-size: 20px;
+      color: #192A56;
+    }
+
+    .dashboard .card .value {
+      font-size: 30px;
+      color: #192A56;
+    }
+
+    .dashboard .chart-container {
+      width: 50%;
+      max-width: 300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .dashboard .chart-container canvas {
+      max-width: 100%;
+    }
+    .recent-orders {
+        background-color: #E8F2FB;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-left: auto;
+        width: 400px;
+      }
+  
+      .recent-orders h2 {
+        color: #2980B9;
+        margin-bottom: 10px;
+      }
+  
+      .recent-orders .order-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      
+      
+      .recent-orders .order-item .order-details {
+        display: flex;
+        align-items: center;
+      }
+  
+      .recent-orders .order-item .order-details .item-price {
+        margin-left: 10px;
+        font-weight: bold;
+
+      
+      }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="bg-dark p-4">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Sales Analytics Dashboard</a>
+      <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    
+    </div>
+    
+  </nav>
+
+  <div class="sidebar">
+    <ul>
+      
+      <li><h4>Dashboard</h4> </a></li>
+      <div class = "linked">
+      <li><a href= "{{ url_for('new_student')}}", style="color:white" , style ="text-decoration:none" >
+      <h4>Log bill</h4></a></li>
+      </div>
+    </ul>
+  </div>
+  
+  <div class="container">
+    
+    <div class="dashboard">
+      
+      <div class="card">
+        <div class="title">Percentage of Stock Left&emsp;</div>
+        <div class="value">{{ trem }}%</div>
+        <div class="chart-container">
+          <canvas id="stockChart"></canvas>
+        </div>
+       
+        <div class="recent-orders">
+          <h2>Recent Orders</h2>
+          <table border = 0>
+            <thead>
+               <td>S.No&emsp;</td>
+               <td>product&emsp;</td>
+               <td>Quantity&emsp;</td>
+               <td>Cost&emsp;</td>
+            </thead>
+            
+            {% for row in rows %}
+               <tr>
+                  <td>{{row['oid']}}&emsp;</td>
+                  <td>{{row["name"]}}&emsp;</td>
+                  <td>{{row['quantity']}}&emsp;</td>
+                  <td> {{row['cost']}}&emsp;</td>
+                  <td><div class="pie animate no-round" style="--p: {{ row['percent'] }};--c:orange;"> {{row['percent']}}</div></td>	
+               </tr>
+            {% endfor %}
+         </table>
+        </div>
+      </div>
+
+      <div class="card2">
+       <div class="card">
+        <div class="title">Number of items Sold</div>
+        <div class="value">{{ total_orders }}</div>
+      </div>
+      <div class="card">
+        <div class="title">Today's income</div>
+        <div class="value">₹{{total_income}}</div>
+      </div>
+      <div class="card">
+        <div class="title">Today's profit</div>
+        <div class="value">₹{{ total_profit }}</div>
+      </div>
+      </div>
+      <div class="recent-orders">
+        <h2>Recent Orders</h2>
+        <table border = 0>
+          <thead>
+             <td>S.No&emsp;</td>
+             <td>product&emsp;</td>
+             <td>Quantity&emsp;</td>
+             <td>Cost&emsp;</td>
+          </thead>
+          
+          {% for row in rows %}
+             <tr>
+                <td>{{row['oid']}}&emsp;</td>
+                <td>{{row["name"]}}&emsp;</td>
+                <td>{{row['quantity']}}&emsp;</td>
+                <td> {{row['cost']}}&emsp;</td>
+                <td><div class="pie animate no-round" style="--p: {{ row['percent'] }};--c:orange;"> {{row['percent']}}</div></td>	
+             </tr>
+          {% endfor %}
+       </table>
+      </div>
+    </div>
+
+    
+
+    
+  </div>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Stock Chart Data
+    const stockData = {
+      labels: ['In Stock', 'Sold'],
+      datasets: [{
+        data: ['{{ trem }}', '{{ tsold }}'],
+        backgroundColor: ['#192A56', '#F5F6FA'],
+        hoverBackgroundColor: ['#0A3D62', '#E2E6EA'],
+      }]
+    };
+
+    // Stock Chart Configuration
+    const stockConfig = {
+      type: 'pie',
+      data: stockData,
+      options: {
+        responsive: true,
+      }
+    };
+
+    // Create Stock Chart
+    const stockChart = new Chart(document.getElementById('stockChart'), stockConfig);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+
+</html>
