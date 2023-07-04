@@ -126,12 +126,13 @@
         border-radius: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin-left: auto;
-        width: 400px;
+        width:650px;
       }
   
       .recent-orders h2 {
         color: #2980B9;
         margin-bottom: 10px;
+        font-style:inherit;
       }
   
       .recent-orders .order-item {
@@ -153,61 +154,49 @@
 
       
       }
+      .navbar{
+        height: 100px;
+        width: 100%;
+        background-color: #2980B9;
+      }
+      .options{
+        margin: 35px;
+      }
+      .options input[type=text]{
+        padding: 6px;
+        margin-left: 800px;
+      }
+      .options a{
+        margin: 5px;
+        font-size: 20px;
+      }
+      .options a:hover {
+  background-color:cornflowerblue;
+  color: black;
+}
+
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-dark">
-    <div class="bg-dark p-4">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">Sales Analytics Dashboard</a>
-      <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    
-    </div>
-    
-  </nav>
+  <div class="navbar">
+    <h2 >Sales Analytics Dashboard</h2>
+    <div class="options">
+      <a>Home</a>
+      <a>Dashboard</a>
+      <a>Log Bill</a>
+      <a>Log out</a>
+      <input type="text" placeholder="Search"></input>
+      <button>Search</button>
 
-  <div class="sidebar">
-    <ul>
-      
-      <li><h4>Dashboard</h4> </a></li>
-      <div class = "linked">
-      <li><a href= "{{ url_for('new_student')}}", style="color:white" , style ="text-decoration:none" >
-      <h4>Log bill</h4></a></li>
-      </div>
-    </ul>
+    </div>
+
+
   </div>
   
+  
   <div class="container">
+
     
     <div class="dashboard">
       
